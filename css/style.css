@@ -1,0 +1,420 @@
+/* ==========================================================================
+   Nesttuntorget Fysioterapi — shared stylesheet
+   ========================================================================== */
+
+:root {
+  --color-primary: #2f6f62;
+  --color-primary-dark: #204c43;
+  --color-accent: #d98a4e;
+  --color-bg: #faf9f6;
+  --color-bg-alt: #eef4f1;
+  --color-card: #ffffff;
+  --color-text: #2b2b2b;
+  --color-text-light: #5b5f5e;
+  --color-border: #e1e5e2;
+
+  --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --max-width: 1120px;
+  --radius: 12px;
+  --shadow: 0 4px 16px rgba(32, 76, 67, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-primary);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---- Header / nav ---- */
+.site-header {
+  background: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.site-logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary-dark);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 0.98rem;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--color-primary-dark);
+  border-bottom-color: var(--color-accent);
+}
+
+/* ---- Hero ---- */
+.hero {
+  background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-bg) 70%);
+  padding: 64px 0 48px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin: 0 0 12px;
+  color: var(--color-primary-dark);
+  letter-spacing: -0.02em;
+}
+
+.hero .lead {
+  font-size: 1.15rem;
+  color: var(--color-text-light);
+  max-width: 640px;
+  margin: 0 0 28px;
+}
+
+.trust-badges {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 0 0 8px;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-primary-dark);
+  box-shadow: var(--shadow);
+}
+
+.trust-badge .check {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+
+/* ---- Generic section ---- */
+.section {
+  padding: 56px 0;
+}
+
+.section-alt {
+  background: var(--color-bg-alt);
+}
+
+.section h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--color-primary-dark);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.section-intro {
+  color: var(--color-text-light);
+  max-width: 640px;
+  margin: 0 0 32px;
+}
+
+/* ---- Om oss / intro text block ---- */
+.intro-block p {
+  max-width: 720px;
+  color: var(--color-text-light);
+}
+
+/* ---- Vi tilbyr cards ---- */
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+}
+
+.offer-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: var(--shadow);
+}
+
+.offer-card .icon {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.offer-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: var(--color-primary-dark);
+}
+
+.offer-card p {
+  margin: 0;
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+}
+
+/* ---- Gallery ---- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.gallery-placeholder {
+  aspect-ratio: 4 / 3;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  background: var(--color-bg-alt);
+  text-align: center;
+  padding: 12px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ---- Therapist cards (Våre fysioterapeuter) ---- */
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.staff-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.staff-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+
+.staff-card h3 {
+  margin: 0 0 4px;
+  color: var(--color-primary-dark);
+  font-size: 1.2rem;
+}
+
+.staff-role {
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0 0 14px;
+}
+
+.staff-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  font-size: 0.92rem;
+  color: var(--color-text-light);
+}
+
+.staff-contact li {
+  margin-bottom: 4px;
+}
+
+.staff-card p.bio {
+  margin: 0;
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+}
+
+/* ---- Kontakt oss ---- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.contact-info-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.contact-info-card h3 {
+  color: var(--color-primary-dark);
+  margin: 24px 0 10px;
+  font-size: 1.05rem;
+}
+
+.contact-info-card h3:first-child {
+  margin-top: 0;
+}
+
+.contact-info-card p {
+  margin: 0;
+  color: var(--color-text-light);
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.hours-table td {
+  padding: 4px 0;
+  color: var(--color-text-light);
+}
+
+.hours-table td:last-child {
+  text-align: right;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.map-embed {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+  min-height: 320px;
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  background: var(--color-primary-dark);
+  color: #eef4f1;
+  padding: 40px 0;
+  margin-top: 40px;
+}
+
+.site-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.site-footer h4 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.site-footer p,
+.site-footer a {
+  color: #cfe0da;
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #fff;
+}
+
+.footer-col {
+  min-width: 200px;
+}
+
+.footer-bottom {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.85rem;
+  color: #a9c1b8;
+}
+
+/* ---- Placeholder text marker ---- */
+.placeholder {
+  color: var(--color-accent);
+  font-style: italic;
+}

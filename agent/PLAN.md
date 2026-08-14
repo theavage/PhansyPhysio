@@ -2,20 +2,37 @@
 
 This is the source of truth for getting this static site live on a custom domain via GitHub Pages. Read this file before doing any work in this repo. Update the checkboxes and the **Status log** at the bottom as steps complete — this doc should always reflect current reality, not just the original plan.
 
-Starting point: personal/portfolio static site, plain HTML/CSS/JS (no build step, no generator), hosted on GitHub Pages, repo is [theavage/PhansyPhysio](https://github.com/theavage/PhansyPhysio). You (the user) own a domain and have the registrar username/password — you do NOT have GitHub Pages or DNS configured yet.
+Starting point: informational static site for **Nesttuntorget Fysioterapi** (a physiotherapy clinic in Bergen, Norway), plain HTML/CSS/JS (no build step, no generator), hosted on GitHub Pages, repo is [theavage/PhansyPhysio](https://github.com/theavage/PhansyPhysio). You (the user) own a domain and have the registrar username/password — you do NOT have GitHub Pages or DNS configured yet.
 
 ## Ground rules
 - Claude can edit files, commit, push, and manage the GitHub repo (it's already created and connected).
 - Claude cannot log into the domain registrar or enter its credentials — any registrar/DNS-dashboard step is done by the user, with Claude providing the exact values to enter.
 - Every step that changes DNS, repo settings, or goes live should be called out clearly when reached, not silently assumed done.
+- **The site must be updatable by a non-technical person** (clinic staff, not a developer) — plain hand-edited HTML is not an acceptable end state for content that changes regularly (opening hours, staff, offered treatments, gallery photos). See Phase 1a below.
 
 ---
 
 ## Phase 1 — Site content & structure
-- [ ] Decide site structure: single page vs. multiple pages (e.g. Home / About / Projects / Contact). Default to a single `index.html` unless told otherwise.
-- [ ] Scaffold files: `index.html`, `style.css`, `assets/` (images/fonts if any), optional `script.js`.
-- [ ] Keep it framework-free static HTML/CSS/JS — no npm build step, so GitHub Pages can serve the repo as-is.
-- [ ] Commit and push scaffold to `main`.
+Site: informational site for Nesttuntorget Fysioterapi, in Norwegian. Three pages:
+- **Hjem** (`index.html`): who they are (centrally located at Nesttuntorget), prominent early mention that all therapists have avtale med Bergen kommune og HELFO, a "Vi tilbyr" section (Lymfødembehandling, Allmenn fysioterapi, treningsfasiliteter, +), and a photo gallery at the bottom (user uploads real photos later).
+- **Våre fysioterapeuter** (`fysioterapeuter.html`): 3 sections, each with name, e-post, telefon, and a medium-length background/specialization description.
+- **Kontakt oss** (`kontakt.html`): address, opening hours, phone number, embedded map.
+
+Design: simple, stylish, calm/trustworthy palette suited to a physiotherapy clinic (not a copy of any reference site).
+
+- [x] Site structure decided: 3 pages (see above), shared nav/footer duplicated per page (no build step, so simplest for non-technical edits later).
+- [x] Scaffold files: `index.html`, `fysioterapeuter.html`, `kontakt.html`, `css/style.css`, `assets/` (images placeholders).
+- [x] Keep it framework-free static HTML/CSS/JS — no npm build step, so GitHub Pages can serve the repo as-is.
+- [ ] Real content still needed from the user to replace placeholders: exact address, phone, email, opening hours, therapist names/emails/phones/bios, final "vi tilbyr" service list, and gallery/staff photos.
+- [x] Commit and push scaffold to `main`.
+
+## Phase 1a — Non-technical content editing (required)
+Plain hand-edited HTML/CSS files are not something clinic staff should have to touch directly. Plan for one of these, to be set up once the core design is approved:
+- **Recommended: a git-based CMS (e.g. Decap CMS)** — adds a `/admin` page with a form-based editor (login via GitHub), writes back to the same repo/files, still 100% static/GitHub-Pages-compatible, no separate hosting needed. Non-technical users edit text and upload images through a web form, not code.
+- Alternative (lower effort, more limited): keep content in one or two clearly-commented HTML files and give the user a short written guide for editing via GitHub's web-based file editor directly — workable for occasional small text edits, but riskier (easy to break HTML markup) and not truly non-technical-friendly.
+- Until this is set up, content changes go through Claude/a developer editing the files directly.
+- [ ] Decide which approach with the user once the initial design is approved.
+- [ ] Implement chosen approach.
 
 ## Phase 2 — Turn on GitHub Pages (get the `github.io` URL working first)
 - [ ] In the repo on GitHub: **Settings → Pages**.
@@ -52,4 +69,5 @@ Starting point: personal/portfolio static site, plain HTML/CSS/JS (no build step
 ## Status log
 _(most recent first — one line per session/change)_
 
-- 2026-08-14 — Repo `theavage/PhansyPhysio` created, initial commit (README) pushed. Phase 1–5 not yet started. This plan file created.
+- 2026-08-14 — Phase 1 scaffold built: `index.html` (Hjem), `fysioterapeuter.html` (Våre fysioterapeuter), `kontakt.html` (Kontakt oss), `css/style.css`, `assets/gallery/`, `assets/staff/`. Verified visually in browser (desktop + mobile) via local static server. Content is placeholder pending real business details (address, phone, email, opening hours, therapist bios, photos). Added Phase 1a (non-technical editing) requirement to this plan. Not yet on GitHub Pages, no domain/DNS set up.
+- 2026-08-14 — Repo `theavage/PhansyPhysio` created, initial commit (README) pushed. Plan file created.
