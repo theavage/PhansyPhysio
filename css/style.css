@@ -149,6 +149,12 @@ a {
   box-shadow: var(--shadow);
 }
 
+.hero-image--fade img {
+  box-shadow: none;
+  mask-image: radial-gradient(ellipse 75% 75% at center, black 15%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at center, black 15%, transparent 95%);
+}
+
 .trust-badges {
   display: flex;
   gap: 16px;
