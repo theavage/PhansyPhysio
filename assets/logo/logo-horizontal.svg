@@ -1,0 +1,8 @@
+<svg viewBox="0 0 440 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nesttuntorget Fysioterapi">
+  <circle cx="50" cy="50" r="44" fill="none" stroke="#d98a4e" stroke-width="6" stroke-linecap="round" stroke-dasharray="207 276" transform="rotate(-90 50 50)" />
+  <circle cx="50" cy="50" r="35" fill="#2f6f62" />
+  <rect x="44" y="30" width="12" height="40" rx="6" fill="#ffffff" />
+  <rect x="30" y="44" width="40" height="12" rx="6" fill="#ffffff" />
+  <text x="118" y="46" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="30" fill="#204c43">Nesttuntorget</text>
+  <text x="118" y="76" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="24" fill="#d98a4e" letter-spacing="0.5">Fysioterapi</text>
+</svg>

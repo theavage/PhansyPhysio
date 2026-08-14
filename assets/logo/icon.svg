@@ -1,0 +1,6 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nesttuntorget Fysioterapi">
+  <circle cx="50" cy="50" r="44" fill="none" stroke="#d98a4e" stroke-width="6" stroke-linecap="round" stroke-dasharray="207 276" transform="rotate(-90 50 50)" />
+  <circle cx="50" cy="50" r="35" fill="#2f6f62" />
+  <rect x="44" y="30" width="12" height="40" rx="6" fill="#ffffff" />
+  <rect x="30" y="44" width="40" height="12" rx="6" fill="#ffffff" />
+</svg>

@@ -26,12 +26,12 @@ _(Quick-reference summary — the phases below have the full detail on each item
 - [ ] Åpningstider on `kontakt.html` (placeholder hours)
 - [ ] The 3 therapists' navn, e-post, telefon og bio on `fysioterapeuter.html` (1 of 3 in progress — see status log)
 - [x] ~~Avbestillingsfrist/gebyr og priser~~ on `sporsmal.html` — written in. ~~Sykmelding~~ and ~~"hva bør jeg tenke på til første time"~~ FAQ items removed entirely rather than filled in.
-- [ ] Logo — still not found/sent (see status log)
+- [x] ~~Logo~~ — real one still not found/sent, but a simple generated placeholder mark is now in place (`assets/logo/`, see status log) so the header/favicon aren't empty in the meantime.
 
 **Recommended, not blocking:**
-- [ ] Real photos to replace the Unsplash stock placeholders (gallery, hero, `kontakt.html`, and the therapist avatars which are currently a generic illustration)
+- [ ] Real photos to replace the Unsplash stock placeholders (gallery, hero, `kontakt.html`, and the therapist avatars which are currently a generic illustration) — same applies to the logo if/when the real one turns up
 - [ ] Invite staff as GitHub Collaborators so `REDIGERING.md` actually works for them (Phase 1a)
-- [ ] Favicon — none set yet
+- [x] ~~Favicon~~ — using the generated logo icon (`assets/logo/icon.svg`) for now
 - [ ] Optional SEO basics (sitemap.xml, robots.txt, social share/og: image tags) — not required for a small local-business site but easy to add later
 
 ---
@@ -113,6 +113,7 @@ Once that one-time setup is done, the therapists never see or deal with any of t
 ## Status log
 _(most recent first — one line per session/change)_
 
+- 2026-08-14 — Generated a simple placeholder logo (real one still not tracked down). Design: rounded white plus in a teal circle, wrapped by a partial terracotta accent ring — colors match the site palette exactly. `assets/logo/icon.svg` (mark only, used as favicon + header icon on all 4 pages) and `assets/logo/logo-horizontal.svg` (icon + wordmark lockup, standalone file for use outside the site — uses a generic bold sans-serif fallback font since it can't rely on the page's web fonts). Sent both files to the user directly. Swap these out if/when the clinic's real logo is found or provided.
 - 2026-08-14 — Content pass across the site: "Vi tilbyr" reordered (Allmenn fysioterapi first) and Nevrologisk fysioterapi swapped for Manuellterapi with a new description. Removed the 2 gallery photos showing an empty training room (kept only hands-on treatment shots), renumbered remaining files gallery-1..4. Removed the shared `E-post: [post@nesttuntorgetfysioterapi.no]` line everywhere (footer on all 4 pages + kontakt.html "Øvrige henvendelser") since the institute doesn't have one shared email. Removed the intro paragraph on `fysioterapeuter.html`'s hero. On `sporsmal.html`: dropped the bracketed pricing placeholder, wrote a real (non-placeholder) avbestilling policy (senest siste virkedag, gebyr ved senere avbestilling/uteblivelse), simplified the pasientreiser answer, and removed the sykmelding and "første time" FAQ items entirely (also trimmed sykmelding out of the page's meta description). Note: had to merge a divergent remote commit — the user is already editing `fysioterapeuter.html` directly on GitHub (first real therapist entry in progress, still has `class="placeholder"` left on the fields).
 - 2026-08-14 — Added a "Fjerne den oransje/kursiverte plassholder-stilen" section to `REDIGERING.md`, explaining how to drop `class="placeholder"` (as a wrapping `<span>` vs. an extra class on an existing tag) when replacing bracketed TODO content with real text. Also added `sporsmal.html` to the file list in "Slik endrer du tekst" — it was missing.
 - 2026-08-14 — Answered "what's the simplest way for therapists to edit with zero coding" in Phase 1a: Decap CMS remains the actual answer (plain form, no HTML) — the earlier objection was about one-time setup cost (OAuth proxy + a free Cloudflare/Netlify account), not ongoing complexity for therapists. Documented clearly and left as a pending decision for the user.
