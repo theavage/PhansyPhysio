@@ -41,10 +41,10 @@ Plain hand-edited HTML/CSS files are not something clinic staff should have to t
 - [ ] Revisit Decap CMS later if the GitHub-editor approach proves too error-prone day-to-day (guide already flags this as an option).
 
 ## Phase 2 — Turn on GitHub Pages (get the `github.io` URL working first)
-- [ ] In the repo on GitHub: **Settings → Pages**.
-- [ ] Source: **Deploy from a branch** → branch `main`, folder `/ (root)`.
-- [ ] Save, wait ~1 min for first build, then confirm the site loads at `https://theavage.github.io/PhansyPhysio/`.
-- [ ] Do NOT touch the custom domain until this default URL works — it isolates DNS problems from Pages/build problems.
+- [x] Enabled via `gh api repos/theavage/PhansyPhysio/pages` (source: branch `main`, path `/`).
+- [x] First build completed (status: `built`).
+- [x] Confirmed live at `https://theavage.github.io/PhansyPhysio/` — homepage and `sporsmal.html` both verified rendering correctly.
+- [x] Custom domain not touched yet — correctly isolating DNS problems from Pages/build problems.
 
 ## Phase 3 — Point the custom domain at GitHub Pages (user action + Claude action)
 - [ ] Decide canonical domain form: apex (`example.com`) or `www.example.com`. GitHub Pages supports either as primary with the other redirecting to it — recommend apex as primary, `www` redirecting, unless you have a reason to prefer `www`.
@@ -75,6 +75,7 @@ Plain hand-edited HTML/CSS files are not something clinic staff should have to t
 ## Status log
 _(most recent first — one line per session/change)_
 
+- 2026-08-14 — Phase 2 done: GitHub Pages enabled on `theavage/PhansyPhysio` (branch `main`, root), first build succeeded, live and verified at `https://theavage.github.io/PhansyPhysio/`. Next: Phase 3, custom domain — need the domain name and to decide apex vs. `www` before adding the `CNAME` file and DNS records.
 - 2026-08-14 — Fixes + new content: confirmed this site replaces the old one (ownership changed, no owner name used). Removed all stock photos with visible faces (hero + one gallery photo) and replaced with face-free alternatives; staff avatars switched from stock photos to a generic faceless SVG illustration. Merged the two hero trust badges into one ("Terapeuter med offentlig driftsavtale"). Added a new "Hvordan komme deg til oss" section on the homepage (parkering + kollektivtransport, kept generic/safe since exact parking details weren't confirmed). Added `sporsmal.html` (Spørsmål/FAQ page, original content, topic list inspired by rosenkrantz.no/spørsmål) and wired it into nav/footer on all pages.
 - 2026-08-14 — Real content added: address (Nesttunvegen 98, 5221 Nesttun — confirmed via public business listings, incl. that the clinic dates back to 1983), phone (55 13 34 83), and fagområder (Lymfødem, Allmennfysioterapi, Nevrologisk fysioterapi, Treningsfasiliteter) from the user. Expanded "Om oss" copy on the homepage using these facts. Switched heading font to Plus Jakarta Sans (body stays Inter) for a more modern look. Added Unsplash stock photos (free license, no attribution required) throughout — hero image, 6-photo gallery, 3 staff portraits, kontakt page photo — all clearly marked in code comments as placeholders to swap for real photos later. Map on kontakt.html now geocodes the real address. Decided Phase 1a: skip Decap CMS (would need an extra OAuth-proxy account), wrote `REDIGERING.md` staff guide for editing via GitHub's web UI instead. NOTE: discovered Nesttuntorget Fysioterapi is a real, existing clinic with its own live site at nesttuntorgetfysioterapi.no — flagged to user, not yet addressed how this new site relates to it.
 - 2026-08-14 — Phase 1 scaffold built: `index.html` (Hjem), `fysioterapeuter.html` (Våre fysioterapeuter), `kontakt.html` (Kontakt oss), `css/style.css`, `assets/gallery/`, `assets/staff/`. Verified visually in browser (desktop + mobile) via local static server. Content is placeholder pending real business details (address, phone, email, opening hours, therapist bios, photos). Added Phase 1a (non-technical editing) requirement to this plan. Not yet on GitHub Pages, no domain/DNS set up.
