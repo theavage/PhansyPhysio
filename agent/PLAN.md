@@ -47,19 +47,20 @@ Plain hand-edited HTML/CSS files are not something clinic staff should have to t
 - [x] Custom domain not touched yet — correctly isolating DNS problems from Pages/build problems.
 
 ## Phase 3 — Point the custom domain at GitHub Pages (user action + Claude action)
-- [ ] Decide canonical domain form: apex (`example.com`) or `www.example.com`. GitHub Pages supports either as primary with the other redirecting to it — recommend apex as primary, `www` redirecting, unless you have a reason to prefer `www`.
-- [ ] Claude adds a `CNAME` file to the repo root containing the chosen domain (GitHub also auto-creates this if you type the domain into Settings → Pages → "Custom domain" — either path works, doing it via the UI is simplest since it also kicks off domain verification).
+- [x] Domain confirmed: **nesttuntorgetfysioterapi.no** (apex, primary — no `www`).
+- [x] `CNAME` file added to repo root containing `nesttuntorgetfysioterapi.no`.
+- [x] Custom domain set via `gh api repos/theavage/PhansyPhysio/pages -X PUT -f cname=nesttuntorgetfysioterapi.no`. Status currently shows `"errored"` — this is expected/normal until DNS is pointed at GitHub (see next step), not a real problem.
 - [ ] **User step, at the registrar dashboard** — add DNS records:
-  - **Apex domain** (`example.com`): four `A` records, all pointing to:
+  - **Apex domain** (`nesttuntorgetfysioterapi.no`): four `A` records, all pointing to:
     - `185.199.108.153`
     - `185.199.109.153`
     - `185.199.110.153`
     - `185.199.111.153`
     - (optional, IPv6) `AAAA` records: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
-  - **`www` subdomain**: one `CNAME` record → `theavage.github.io`
-  - Remove/replace any conflicting existing `A`/`CNAME` records on the same host the registrar may have defaulted to (e.g. parking page records).
-- [ ] **User step (recommended, prevents domain takeover)**: GitHub Pages → Settings → Pages → "Add a domain verification TXT record" flow; add the given `TXT` record at the registrar, then click verify on GitHub.
-- [ ] Wait for DNS propagation (usually minutes, can take up to 24h). Check with `dig +short example.com` / `dig +short www.example.com` and compare against the values above.
+  - **`www` subdomain** (optional, only if you also want `www.nesttuntorgetfysioterapi.no` to work and redirect to the apex): one `CNAME` record → `theavage.github.io`
+  - Remove/replace any conflicting existing `A`/`CNAME` records on the same host (e.g. records currently pointing at the old WordPress install).
+- [ ] Wait for DNS propagation (usually minutes, can take up to 24h). Check with `dig +short nesttuntorgetfysioterapi.no` and compare against the IPs above.
+- [ ] Once DNS resolves, recheck `gh api repos/theavage/PhansyPhysio/pages` — status should move off `"errored"`, and GitHub Pages → Settings → Pages should show the domain verified (possibly with a one-time TXT-record domain-ownership-verification step surfaced there — that flow is web-UI-driven, so check there if prompted).
 
 ## Phase 4 — Finalize on GitHub
 - [ ] Settings → Pages should show the custom domain as verified, with a green check and no DNS warning.
@@ -75,6 +76,7 @@ Plain hand-edited HTML/CSS files are not something clinic staff should have to t
 ## Status log
 _(most recent first — one line per session/change)_
 
+- 2026-08-14 — Phase 3 started: domain confirmed as nesttuntorgetfysioterapi.no (apex). Added `CNAME` file to repo, set custom domain via GitHub API. Pages status shows `"errored"` — expected, since DNS isn't pointed at GitHub yet. Gave user the exact `A`/`AAAA`/`CNAME` records to add at their registrar; that step is on them (we don't have/use registrar credentials).
 - 2026-08-14 — More fixes before Phase 3: trust badge → "Fysioterapeuter med offentlig driftsavtale". Replaced the hero photo (was a clinical hands/foot close-up that read as massage-focused) with a resistance-band guided-training photo — better fits a clinic focused on opptrening/veiledning/forebygging rather than massage; still face-free. Reworked "Hvordan komme deg til oss": dropped the 🅿️/🚋 emoji cards, now leads with a prominent Bybanen callout ("Bybanestopp rett utenfor", styled like the hero trust badge) since the stop is right outside, with bus + parking mentioned as secondary plain text. Added real parking facts (Nesttun Parkering / Alti Nesttun, Østre Nesttunvei 16 — 2 hrs free evenings after 16:00 and weekends, paid ~15–16 kr/hr after that) — sourced from alti.no/nesttun, worth a periodic accuracy check since rates can change. Logo: checked the old domain (nesttuntorgetfysioterapi.no — it's just a default unconfigured WordPress install, no logo there) and public listings (helsesmart.no only shows a generic placeholder); the Google Images link the user sent hit a CAPTCHA wall which we don't attempt to bypass. No usable logo found — asked the user to send the file directly instead.
 - 2026-08-14 — Phase 2 done: GitHub Pages enabled on `theavage/PhansyPhysio` (branch `main`, root), first build succeeded, live and verified at `https://theavage.github.io/PhansyPhysio/`. Next: Phase 3, custom domain — need the domain name and to decide apex vs. `www` before adding the `CNAME` file and DNS records.
 - 2026-08-14 — Fixes + new content: confirmed this site replaces the old one (ownership changed, no owner name used). Removed all stock photos with visible faces (hero + one gallery photo) and replaced with face-free alternatives; staff avatars switched from stock photos to a generic faceless SVG illustration. Merged the two hero trust badges into one ("Terapeuter med offentlig driftsavtale"). Added a new "Hvordan komme deg til oss" section on the homepage (parkering + kollektivtransport, kept generic/safe since exact parking details weren't confirmed). Added `sporsmal.html` (Spørsmål/FAQ page, original content, topic list inspired by rosenkrantz.no/spørsmål) and wired it into nav/footer on all pages.
