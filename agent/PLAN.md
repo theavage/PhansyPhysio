@@ -2,7 +2,9 @@
 
 This is the source of truth for getting this static site live on a custom domain via GitHub Pages. Read this file before doing any work in this repo. Update the checkboxes and the **Status log** at the bottom as steps complete — this doc should always reflect current reality, not just the original plan.
 
-Starting point: informational static site for **Nesttuntorget Fysioterapi** (a physiotherapy clinic in Bergen, Norway), plain HTML/CSS/JS (no build step, no generator), hosted on GitHub Pages, repo is [theavage/PhansyPhysio](https://github.com/theavage/PhansyPhysio). You (the user) own a domain and have the registrar username/password — you do NOT have GitHub Pages or DNS configured yet.
+Starting point: informational static site for **Nesttuntorget Fysioterapi** (a physiotherapy clinic in Bergen, Norway), plain HTML/CSS/JS (no build step, no generator), hosted on GitHub Pages, repo is [theavage/PhansyPhysio](https://github.com/theavage/PhansyPhysio). You (the user) own a domain and have the registrar username/password — you do NOT have GitHub Pages or DNS configured yet. This new site replaces the clinic's old one (nesttuntorgetfysioterapi.no) — ownership has changed and the previous owner (Anne Kvamsdal) is no longer involved, so no owner name is used anywhere on the site.
+
+**Content policy: no visible faces in stock imagery.** Photos used as placeholders must not show identifiable faces (crop to hands/backs/equipment instead); anywhere a specific person needs representing (e.g. staff avatars) use a faceless illustration instead of a stock photo, so nobody mistakes a random stranger's face for a real staff member.
 
 ## Ground rules
 - Claude can edit files, commit, push, and manage the GitHub repo (it's already created and connected).
@@ -13,9 +15,10 @@ Starting point: informational static site for **Nesttuntorget Fysioterapi** (a p
 ---
 
 ## Phase 1 — Site content & structure
-Site: informational site for Nesttuntorget Fysioterapi, in Norwegian. Three pages:
-- **Hjem** (`index.html`): who they are (centrally located at Nesttuntorget), prominent early mention that all therapists have avtale med Bergen kommune og HELFO, a "Vi tilbyr" section (Lymfødembehandling, Allmenn fysioterapi, treningsfasiliteter, +), and a photo gallery at the bottom (user uploads real photos later).
-- **Våre fysioterapeuter** (`fysioterapeuter.html`): 3 sections, each with name, e-post, telefon, and a medium-length background/specialization description.
+Site: informational site for Nesttuntorget Fysioterapi, in Norwegian. Four pages:
+- **Hjem** (`index.html`): who they are (centrally located at Nesttuntorget), a single trust badge ("Terapeuter med offentlig driftsavtale"), "Om oss", a separate "Hvordan komme deg til oss" section (parkering + kollektivtransport), a "Vi tilbyr" section (Lymfødembehandling, Allmenn fysioterapi, Nevrologisk fysioterapi, Treningsfasiliteter), and a photo gallery at the bottom.
+- **Våre fysioterapeuter** (`fysioterapeuter.html`): 3 cards, each with name, e-post, telefon, and a medium-length background/specialization description. Avatars are a faceless illustrated placeholder (inline SVG), not a stock photo.
+- **Spørsmål** (`sporsmal.html`): FAQ page (topic list inspired by rosenkrantz.no/spørsmål but original content) — henvisning, egenandel/frikort, avbestilling, pasientreiser, sykmelding, første time.
 - **Kontakt oss** (`kontakt.html`): address, opening hours, phone number, embedded map.
 
 Design: simple, stylish, calm/trustworthy palette suited to a physiotherapy clinic (not a copy of any reference site).
@@ -24,7 +27,7 @@ Design: simple, stylish, calm/trustworthy palette suited to a physiotherapy clin
 - [x] Scaffold files: `index.html`, `fysioterapeuter.html`, `kontakt.html`, `css/style.css`, `assets/` (images placeholders).
 - [x] Keep it framework-free static HTML/CSS/JS — no npm build step, so GitHub Pages can serve the repo as-is.
 - [x] Real address (Nesttunvegen 98, 5221 Nesttun) and phone (55 13 34 83) added from user + confirmed via public listings. Real "vi tilbyr"/fagområder list added: Lymfødembehandling, Allmenn fysioterapi, Nevrologisk fysioterapi, Treningsfasiliteter.
-- [ ] Still placeholder, needs real info: e-post, åpningstider, the 3 therapists' names/emails/phones/bios, real photos (gallery, staff, hero) to replace the Unsplash stock photos currently in place.
+- [ ] Still placeholder, needs real info: e-post, åpningstider, the 3 therapists' names/emails/phones/bios, real photos (gallery, staff, hero), avbestillingsfrist/priser and sykmelding answer on `sporsmal.html`.
 - [x] Commit and push scaffold to `main`.
 
 ## Phase 1a — Non-technical content editing (required)
@@ -72,6 +75,7 @@ Plain hand-edited HTML/CSS files are not something clinic staff should have to t
 ## Status log
 _(most recent first — one line per session/change)_
 
+- 2026-08-14 — Fixes + new content: confirmed this site replaces the old one (ownership changed, no owner name used). Removed all stock photos with visible faces (hero + one gallery photo) and replaced with face-free alternatives; staff avatars switched from stock photos to a generic faceless SVG illustration. Merged the two hero trust badges into one ("Terapeuter med offentlig driftsavtale"). Added a new "Hvordan komme deg til oss" section on the homepage (parkering + kollektivtransport, kept generic/safe since exact parking details weren't confirmed). Added `sporsmal.html` (Spørsmål/FAQ page, original content, topic list inspired by rosenkrantz.no/spørsmål) and wired it into nav/footer on all pages.
 - 2026-08-14 — Real content added: address (Nesttunvegen 98, 5221 Nesttun — confirmed via public business listings, incl. that the clinic dates back to 1983), phone (55 13 34 83), and fagområder (Lymfødem, Allmennfysioterapi, Nevrologisk fysioterapi, Treningsfasiliteter) from the user. Expanded "Om oss" copy on the homepage using these facts. Switched heading font to Plus Jakarta Sans (body stays Inter) for a more modern look. Added Unsplash stock photos (free license, no attribution required) throughout — hero image, 6-photo gallery, 3 staff portraits, kontakt page photo — all clearly marked in code comments as placeholders to swap for real photos later. Map on kontakt.html now geocodes the real address. Decided Phase 1a: skip Decap CMS (would need an extra OAuth-proxy account), wrote `REDIGERING.md` staff guide for editing via GitHub's web UI instead. NOTE: discovered Nesttuntorget Fysioterapi is a real, existing clinic with its own live site at nesttuntorgetfysioterapi.no — flagged to user, not yet addressed how this new site relates to it.
 - 2026-08-14 — Phase 1 scaffold built: `index.html` (Hjem), `fysioterapeuter.html` (Våre fysioterapeuter), `kontakt.html` (Kontakt oss), `css/style.css`, `assets/gallery/`, `assets/staff/`. Verified visually in browser (desktop + mobile) via local static server. Content is placeholder pending real business details (address, phone, email, opening hours, therapist bios, photos). Added Phase 1a (non-technical editing) requirement to this plan. Not yet on GitHub Pages, no domain/DNS set up.
 - 2026-08-14 — Repo `theavage/PhansyPhysio` created, initial commit (README) pushed. Plan file created.
