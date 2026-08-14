@@ -7,7 +7,7 @@
   <meta name="description" content="Nesttuntorget Fysioterapi – din lokale fysioterapiklinikk sentralt plassert på Nesttuntorget. Avtale med Bergen kommune og HELFO." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -28,15 +28,20 @@
   <main>
     <!-- Hero / intro -->
     <section class="hero">
-      <div class="container">
-        <h1>Nesttuntorget Fysioterapi</h1>
-        <p class="lead">
-          Vi er en fysioterapiinstitutt sentralt plassert på <strong>Nesttuntorget</strong> i Bergen,
-          med gode fasiliteter og enkel tilgjengelighet for alle våre pasienter.
-        </p>
-        <div class="trust-badges">
-          <span class="trust-badge"><span class="check">✓</span> Avtale med Bergen kommune</span>
-          <span class="trust-badge"><span class="check">✓</span> Avtale med HELFO</span>
+      <div class="container hero-flex">
+        <div class="hero-text">
+          <h1>Nesttuntorget Fysioterapi</h1>
+          <p class="lead">
+            Vi er en fysioterapiklinikk sentralt plassert på <strong>Nesttuntorget</strong> i Bergen,
+            med gode fasiliteter og enkel tilgjengelighet for alle våre pasienter.
+          </p>
+          <div class="trust-badges">
+            <span class="trust-badge"><span class="check">✓</span> Avtale med Bergen kommune</span>
+            <span class="trust-badge"><span class="check">✓</span> Avtale med HELFO</span>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="assets/hero/hero-home.jpg" alt="Fysioterapeut hjelper pasient med tøying og oppfølging" />
         </div>
       </div>
     </section>
@@ -46,10 +51,19 @@
       <div class="container">
         <h2>Om oss</h2>
         <p>
-          <span class="placeholder">[Kort om instituttet – hvem dere er, hvor lenge dere har holdt til på Nesttuntorget,
-          og hva som gjør klinikken deres spesiell. Erstatt denne teksten med egen tekst.]</span>
-          Alle våre fysioterapeuter har driftsavtale med Bergen kommune og HELFO, noe som gir deg som pasient
-          redusert egenandel og rett til frikort ved behov.
+          Nesttuntorget Fysioterapi er en veletablert klinikk med røtter tilbake til 1983, sentralt plassert
+          på Nesttuntorget i Bergen. Gjennom mange år i lokalmiljøet har vi bygget bred erfaring med å hjelpe
+          pasienter i alle aldre tilbake til bevegelse og hverdagen.
+        </p>
+        <p>
+          Hos oss møter du tre erfarne fysioterapeuter, alle med driftsavtale med Bergen kommune og HELFO.
+          Det gir deg som pasient redusert egenandel og rett til frikort ved behov. Vi har bred kompetanse
+          innen allmenn fysioterapi, lymfødembehandling og nevrologisk fysioterapi, i tillegg til et godt
+          utstyrt treningsrom for veiledet trening og rehabilitering.
+        </p>
+        <p>
+          Den sentrale beliggenheten på Nesttuntorget gjør oss enkle å komme til, med gode parkeringsmuligheter
+          og kort vei fra kollektivtransport.
         </p>
       </div>
     </section>
@@ -58,7 +72,7 @@
     <section class="section section-alt">
       <div class="container">
         <h2>Vi tilbyr</h2>
-        <p class="section-intro">Et bredt tilbud innen fysioterapi, tilpasset dine behov.</p>
+        <p class="section-intro">Våre fagområder og fasiliteter.</p>
         <div class="offer-grid">
           <div class="offer-card">
             <span class="icon">🩹</span>
@@ -71,14 +85,14 @@
             <p>Undersøkelse, behandling og forebygging av skader og plager i muskel- og skjelettsystemet.</p>
           </div>
           <div class="offer-card">
+            <span class="icon">🧠</span>
+            <h3>Nevrologisk fysioterapi</h3>
+            <p>Oppfølging og trening tilpasset deg med nevrologiske tilstander og skader.</p>
+          </div>
+          <div class="offer-card">
             <span class="icon">🏋️</span>
             <h3>Treningsfasiliteter</h3>
             <p>Godt utstyrt treningsrom for veiledet og individuelt tilpasset trening.</p>
-          </div>
-          <div class="offer-card">
-            <span class="icon">➕</span>
-            <h3>Og mer til</h3>
-            <p class="placeholder">[Legg til flere tjenester her, f.eks. manuellterapi, akupunktur eller spesifikke spesialiseringer.]</p>
           </div>
         </div>
       </div>
@@ -88,17 +102,15 @@
     <section class="section">
       <div class="container">
         <h2>Galleri</h2>
-        <p class="section-intro">
-          Bilder av klinikken og fasilitetene våre kommer her.
-          <span class="placeholder">[Last opp egne bilder i assets/gallery/ og bytt ut plassholderne under.]</span>
-        </p>
+        <p class="section-intro">Et lite innblikk i klinikken og behandlingene våre.</p>
+        <!-- Stock photos as placeholders — swap for real photos of the clinic/staff via assets/gallery/ once available. -->
         <div class="gallery-grid">
-          <div class="gallery-placeholder">Bilde kommer</div>
-          <div class="gallery-placeholder">Bilde kommer</div>
-          <div class="gallery-placeholder">Bilde kommer</div>
-          <div class="gallery-placeholder">Bilde kommer</div>
-          <div class="gallery-placeholder">Bilde kommer</div>
-          <div class="gallery-placeholder">Bilde kommer</div>
+          <img src="assets/gallery/gallery-1.jpg" alt="Fysioterapeut behandler pasientens skulder" loading="lazy" />
+          <img src="assets/gallery/gallery-2.jpg" alt="Veiledet tøying og trening" loading="lazy" />
+          <img src="assets/gallery/gallery-3.jpg" alt="Undersøkelse og behandling av bein" loading="lazy" />
+          <img src="assets/gallery/gallery-4.jpg" alt="Lyst og luftig treningsrom" loading="lazy" />
+          <img src="assets/gallery/gallery-5.jpg" alt="Behandling av rygg" loading="lazy" />
+          <img src="assets/gallery/gallery-6.jpg" alt="Treningsfasiliteter med apparater" loading="lazy" />
         </div>
       </div>
     </section>
@@ -108,11 +120,11 @@
     <div class="container">
       <div class="footer-col">
         <h4>Nesttuntorget Fysioterapi</h4>
-        <p class="placeholder">[Gateadresse], Nesttuntorget<br />Bergen</p>
+        <p>Nesttunvegen 98<br />5221 Nesttun, Bergen</p>
       </div>
       <div class="footer-col">
         <h4>Kontakt</h4>
-        <p class="placeholder">Tlf: [XX XX XX XX]<br />E-post: [post@nesttuntorget-fysioterapi.no]</p>
+        <p>Tlf: <a href="tel:55133483">55 13 34 83</a><br />E-post: <span class="placeholder">[post@nesttuntorgetfysioterapi.no]</span></p>
       </div>
       <div class="footer-col">
         <h4>Snarveier</h4>

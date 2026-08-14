@@ -1,1 +1,1 @@
-Put gallery photos for the homepage here (e.g. `klinikk-1.jpg`). Then update the gallery grid in `index.html` to use `<img>` tags pointing at these files instead of the "Bilde kommer" placeholders.
+`gallery-1.jpg` through `gallery-6.jpg` are stock photos (Unsplash, free license) used as placeholders in `index.html`'s gallery section. Replace them with real photos of the clinic/facilities when available — keep the same filenames, or update the `src` attributes in `index.html` if you rename them.

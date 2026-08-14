@@ -23,16 +23,19 @@ Design: simple, stylish, calm/trustworthy palette suited to a physiotherapy clin
 - [x] Site structure decided: 3 pages (see above), shared nav/footer duplicated per page (no build step, so simplest for non-technical edits later).
 - [x] Scaffold files: `index.html`, `fysioterapeuter.html`, `kontakt.html`, `css/style.css`, `assets/` (images placeholders).
 - [x] Keep it framework-free static HTML/CSS/JS — no npm build step, so GitHub Pages can serve the repo as-is.
-- [ ] Real content still needed from the user to replace placeholders: exact address, phone, email, opening hours, therapist names/emails/phones/bios, final "vi tilbyr" service list, and gallery/staff photos.
+- [x] Real address (Nesttunvegen 98, 5221 Nesttun) and phone (55 13 34 83) added from user + confirmed via public listings. Real "vi tilbyr"/fagområder list added: Lymfødembehandling, Allmenn fysioterapi, Nevrologisk fysioterapi, Treningsfasiliteter.
+- [ ] Still placeholder, needs real info: e-post, åpningstider, the 3 therapists' names/emails/phones/bios, real photos (gallery, staff, hero) to replace the Unsplash stock photos currently in place.
 - [x] Commit and push scaffold to `main`.
 
 ## Phase 1a — Non-technical content editing (required)
-Plain hand-edited HTML/CSS files are not something clinic staff should have to touch directly. Plan for one of these, to be set up once the core design is approved:
-- **Recommended: a git-based CMS (e.g. Decap CMS)** — adds a `/admin` page with a form-based editor (login via GitHub), writes back to the same repo/files, still 100% static/GitHub-Pages-compatible, no separate hosting needed. Non-technical users edit text and upload images through a web form, not code.
-- Alternative (lower effort, more limited): keep content in one or two clearly-commented HTML files and give the user a short written guide for editing via GitHub's web-based file editor directly — workable for occasional small text edits, but riskier (easy to break HTML markup) and not truly non-technical-friendly.
-- Until this is set up, content changes go through Claude/a developer editing the files directly.
-- [ ] Decide which approach with the user once the initial design is approved.
-- [ ] Implement chosen approach.
+Plain hand-edited HTML/CSS files are not something clinic staff should have to touch directly.
+
+**Decision (2026-08-14): skip a form-based CMS for now.** A git-based CMS (Decap CMS) was considered — it would give a proper `/admin` form editor, but its GitHub login requires a small server-side OAuth proxy, which means creating an account on an extra platform (Cloudflare/Netlify) purely to host that proxy. User chose to skip that extra infrastructure for now.
+
+**Chosen approach: GitHub's built-in web file editor + a written guide.**
+- [x] Wrote [`REDIGERING.md`](../REDIGERING.md) (Norwegian, staff-facing) — step-by-step for editing text directly on github.com, what's safe to touch vs. not, a lookup table of common edits, and how to recover from mistakes via commit history.
+- [ ] User needs to invite each staff member as a GitHub **Collaborator** (repo Settings → Collaborators) so they have their own login rather than sharing the owner's credentials.
+- [ ] Revisit Decap CMS later if the GitHub-editor approach proves too error-prone day-to-day (guide already flags this as an option).
 
 ## Phase 2 — Turn on GitHub Pages (get the `github.io` URL working first)
 - [ ] In the repo on GitHub: **Settings → Pages**.
@@ -69,5 +72,6 @@ Plain hand-edited HTML/CSS files are not something clinic staff should have to t
 ## Status log
 _(most recent first — one line per session/change)_
 
+- 2026-08-14 — Real content added: address (Nesttunvegen 98, 5221 Nesttun — confirmed via public business listings, incl. that the clinic dates back to 1983), phone (55 13 34 83), and fagområder (Lymfødem, Allmennfysioterapi, Nevrologisk fysioterapi, Treningsfasiliteter) from the user. Expanded "Om oss" copy on the homepage using these facts. Switched heading font to Plus Jakarta Sans (body stays Inter) for a more modern look. Added Unsplash stock photos (free license, no attribution required) throughout — hero image, 6-photo gallery, 3 staff portraits, kontakt page photo — all clearly marked in code comments as placeholders to swap for real photos later. Map on kontakt.html now geocodes the real address. Decided Phase 1a: skip Decap CMS (would need an extra OAuth-proxy account), wrote `REDIGERING.md` staff guide for editing via GitHub's web UI instead. NOTE: discovered Nesttuntorget Fysioterapi is a real, existing clinic with its own live site at nesttuntorgetfysioterapi.no — flagged to user, not yet addressed how this new site relates to it.
 - 2026-08-14 — Phase 1 scaffold built: `index.html` (Hjem), `fysioterapeuter.html` (Våre fysioterapeuter), `kontakt.html` (Kontakt oss), `css/style.css`, `assets/gallery/`, `assets/staff/`. Verified visually in browser (desktop + mobile) via local static server. Content is placeholder pending real business details (address, phone, email, opening hours, therapist bios, photos). Added Phase 1a (non-technical editing) requirement to this plan. Not yet on GitHub Pages, no domain/DNS set up.
 - 2026-08-14 — Repo `theavage/PhansyPhysio` created, initial commit (README) pushed. Plan file created.

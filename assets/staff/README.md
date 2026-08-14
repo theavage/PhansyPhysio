@@ -1,1 +1,1 @@
-Put therapist photos here (e.g. `navn-etternavn.jpg`). Then update the avatar circles in `fysioterapeuter.html` to use `<img>` tags pointing at these files instead of the initials placeholders.
+`staff-1.jpg`, `staff-2.jpg`, `staff-3.jpg` are stock photos (Unsplash, free license) used as placeholders in `fysioterapeuter.html`. Replace them with real photos of each therapist when available — keep the same filenames, or update the `src` attributes in `fysioterapeuter.html` if you rename them.
