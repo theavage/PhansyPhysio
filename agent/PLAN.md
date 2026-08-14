@@ -14,6 +14,28 @@ Starting point: informational static site for **Nesttuntorget Fysioterapi** (a p
 
 ---
 
+## Launch checklist — what's left before this goes live for real
+_(Quick-reference summary — the phases below have the full detail on each item.)_
+
+**Blocking — must happen before the real domain points here:**
+- [ ] **User:** update DNS at Domeneshop (see Phase 3) — swap the `A` records to GitHub's IPs, leave `MX` alone.
+- [ ] **Claude, once DNS resolves:** re-add `CNAME`, reconfigure the custom domain on GitHub Pages, verify it resolves, enable "Enforce HTTPS" (Phase 4).
+
+**Should fill in before launch** (these currently show as bracketed `[...]` placeholders on the live site — fine for review, not for real visitors):
+- [ ] E-post-adresse (shown as `[post@nesttuntorgetfysioterapi.no]` in every footer + `kontakt.html`)
+- [ ] Åpningstider on `kontakt.html` (placeholder hours)
+- [ ] The 3 therapists' navn, e-post, telefon og bio on `fysioterapeuter.html`
+- [ ] Avbestillingsfrist/gebyr and the sykmelding answer on `sporsmal.html` (bracketed TODOs)
+- [ ] Logo — still not found/sent (see status log)
+
+**Recommended, not blocking:**
+- [ ] Real photos to replace the Unsplash stock placeholders (gallery, hero, `kontakt.html`, and the therapist avatars which are currently a generic illustration)
+- [ ] Invite staff as GitHub Collaborators so `REDIGERING.md` actually works for them (Phase 1a)
+- [ ] Favicon — none set yet
+- [ ] Optional SEO basics (sitemap.xml, robots.txt, social share/og: image tags) — not required for a small local-business site but easy to add later
+
+---
+
 ## Phase 1 — Site content & structure
 Site: informational site for Nesttuntorget Fysioterapi, in Norwegian. Four pages:
 - **Hjem** (`index.html`): who they are (centrally located at Nesttuntorget), a single trust badge ("Terapeuter med offentlig driftsavtale"), "Om oss", a separate "Hvordan komme deg til oss" section (parkering + kollektivtransport), a "Vi tilbyr" section (Lymfødembehandling, Allmenn fysioterapi, Nevrologisk fysioterapi, Treningsfasiliteter), and a photo gallery at the bottom.
@@ -81,6 +103,7 @@ Plain hand-edited HTML/CSS files are not something clinic staff should have to t
 ## Status log
 _(most recent first — one line per session/change)_
 
+- 2026-08-14 — Added a top-level "Launch checklist" section consolidating everything still outstanding (DNS, placeholder content, logo, nice-to-haves) in one scannable list. Fixed two small inconsistencies found while reviewing: homepage meta description still said the old badge text ("Terapeuter..." vs the actual "Fysioterapeuter..."), and therapist email placeholders in `fysioterapeuter.html` used a dash (`nesttuntorget-fysioterapi.no`) that didn't match the real domain.
 - 2026-08-14 — Hero image fade pushed further per follow-up feedback: reduced opacity (0.6) and widened/softened the mask gradient so it reads as an ambient background element on the right side rather than a distinct framed photo.
 - 2026-08-14 — Moved "Timebestilling" text on `kontakt.html` out of the `contact-info-card` box, now sits directly under the "Kontakt oss" heading/lead in the hero. Removed a stray comma in the parking sentence on `index.html` ("...Nesttunvei 16) mot betaling."). Domain registrar confirmed as domeneshop.no (package includes "Epost" + "WebStandard" hosting) — see Phase 3 notes for Domeneshop-specific DNS steps.
 - 2026-08-14 — Small refinements: phone number reverted back to 55 13 34 83 everywhere (the 55 13 39 06 swap from the previous round was undone — old number is correct after all). Homepage hero image now has a soft radial fade (CSS `mask-image`, `.hero-image--fade` — scoped to the homepage only, so `kontakt.html`'s hero photo keeps its normal sharp card look) instead of a hard-edged photo card, per request ("fader mer inn i bakgrunnen"). Parking text on `index.html` simplified: dropped the free-evenings/weekends detail (irrelevant — that's outside opening hours) and "rett ved siden av oss", now just states parking is paid ("mot betaling").
