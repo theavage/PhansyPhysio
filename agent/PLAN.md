@@ -22,10 +22,10 @@ _(Quick-reference summary — the phases below have the full detail on each item
 - [ ] **Claude, once DNS resolves:** re-add `CNAME`, reconfigure the custom domain on GitHub Pages, verify it resolves, enable "Enforce HTTPS" (Phase 4).
 
 **Should fill in before launch** (these currently show as bracketed `[...]` placeholders on the live site — fine for review, not for real visitors):
-- [ ] E-post-adresse (shown as `[post@nesttuntorgetfysioterapi.no]` in every footer + `kontakt.html`)
+- [x] ~~E-post-adresse~~ — decided there's no single shared institute email (each therapist has their own), so the shared `post@...` line was removed everywhere rather than filled in. Not a gap anymore.
 - [ ] Åpningstider on `kontakt.html` (placeholder hours)
-- [ ] The 3 therapists' navn, e-post, telefon og bio on `fysioterapeuter.html`
-- [ ] Avbestillingsfrist/gebyr and the sykmelding answer on `sporsmal.html` (bracketed TODOs)
+- [ ] The 3 therapists' navn, e-post, telefon og bio on `fysioterapeuter.html` (1 of 3 in progress — see status log)
+- [x] ~~Avbestillingsfrist/gebyr og priser~~ on `sporsmal.html` — written in. ~~Sykmelding~~ and ~~"hva bør jeg tenke på til første time"~~ FAQ items removed entirely rather than filled in.
 - [ ] Logo — still not found/sent (see status log)
 
 **Recommended, not blocking:**
@@ -38,7 +38,7 @@ _(Quick-reference summary — the phases below have the full detail on each item
 
 ## Phase 1 — Site content & structure
 Site: informational site for Nesttuntorget Fysioterapi, in Norwegian. Four pages:
-- **Hjem** (`index.html`): who they are (centrally located at Nesttuntorget), a single trust badge ("Terapeuter med offentlig driftsavtale"), "Om oss", a separate "Hvordan komme deg til oss" section (parkering + kollektivtransport), a "Vi tilbyr" section (Lymfødembehandling, Allmenn fysioterapi, Nevrologisk fysioterapi, Treningsfasiliteter), and a photo gallery at the bottom.
+- **Hjem** (`index.html`): who they are (centrally located at Nesttuntorget), a single trust badge ("Fysioterapeuter med offentlig driftsavtale"), "Om oss", a "Slik finner du oss" section (kollektiv + parkering), a "Vi tilbyr" section (Allmenn fysioterapi, Lymfødembehandling, Manuellterapi, Treningsfasiliteter), and a photo gallery at the bottom.
 - **Våre fysioterapeuter** (`fysioterapeuter.html`): 3 cards, each with name, e-post, telefon, and a medium-length background/specialization description. Avatars are a faceless illustrated placeholder (inline SVG), not a stock photo.
 - **Spørsmål** (`sporsmal.html`): FAQ page (topic list inspired by rosenkrantz.no/spørsmål but original content) — henvisning, egenandel/frikort, avbestilling, pasientreiser, sykmelding, første time.
 - **Kontakt oss** (`kontakt.html`): address, opening hours, phone number, embedded map.
@@ -48,7 +48,7 @@ Design: simple, stylish, calm/trustworthy palette suited to a physiotherapy clin
 - [x] Site structure decided: 3 pages (see above), shared nav/footer duplicated per page (no build step, so simplest for non-technical edits later).
 - [x] Scaffold files: `index.html`, `fysioterapeuter.html`, `kontakt.html`, `css/style.css`, `assets/` (images placeholders).
 - [x] Keep it framework-free static HTML/CSS/JS — no npm build step, so GitHub Pages can serve the repo as-is.
-- [x] Real address (Nesttunvegen 98, 5221 Nesttun) and phone (55 13 34 83) added from user + confirmed via public listings. Real "vi tilbyr"/fagområder list added: Lymfødembehandling, Allmenn fysioterapi, Nevrologisk fysioterapi, Treningsfasiliteter.
+- [x] Real address (Nesttunvegen 98, 5221 Nesttun) and phone (55 13 34 83) added from user + confirmed via public listings. Fagområder ("Vi tilbyr") finalized: Allmenn fysioterapi, Lymfødembehandling, Manuellterapi, Treningsfasiliteter (Nevrologisk fysioterapi swapped out for Manuellterapi 2026-08-14).
 - [ ] Still placeholder, needs real info: e-post, åpningstider, the 3 therapists' names/emails/phones/bios, real photos (gallery, staff, hero), avbestillingsfrist/priser and sykmelding answer on `sporsmal.html`.
 - [x] Commit and push scaffold to `main`.
 
@@ -113,6 +113,7 @@ Once that one-time setup is done, the therapists never see or deal with any of t
 ## Status log
 _(most recent first — one line per session/change)_
 
+- 2026-08-14 — Content pass across the site: "Vi tilbyr" reordered (Allmenn fysioterapi first) and Nevrologisk fysioterapi swapped for Manuellterapi with a new description. Removed the 2 gallery photos showing an empty training room (kept only hands-on treatment shots), renumbered remaining files gallery-1..4. Removed the shared `E-post: [post@nesttuntorgetfysioterapi.no]` line everywhere (footer on all 4 pages + kontakt.html "Øvrige henvendelser") since the institute doesn't have one shared email. Removed the intro paragraph on `fysioterapeuter.html`'s hero. On `sporsmal.html`: dropped the bracketed pricing placeholder, wrote a real (non-placeholder) avbestilling policy (senest siste virkedag, gebyr ved senere avbestilling/uteblivelse), simplified the pasientreiser answer, and removed the sykmelding and "første time" FAQ items entirely (also trimmed sykmelding out of the page's meta description). Note: had to merge a divergent remote commit — the user is already editing `fysioterapeuter.html` directly on GitHub (first real therapist entry in progress, still has `class="placeholder"` left on the fields).
 - 2026-08-14 — Added a "Fjerne den oransje/kursiverte plassholder-stilen" section to `REDIGERING.md`, explaining how to drop `class="placeholder"` (as a wrapping `<span>` vs. an extra class on an existing tag) when replacing bracketed TODO content with real text. Also added `sporsmal.html` to the file list in "Slik endrer du tekst" — it was missing.
 - 2026-08-14 — Answered "what's the simplest way for therapists to edit with zero coding" in Phase 1a: Decap CMS remains the actual answer (plain form, no HTML) — the earlier objection was about one-time setup cost (OAuth proxy + a free Cloudflare/Netlify account), not ongoing complexity for therapists. Documented clearly and left as a pending decision for the user.
 - 2026-08-14 — Added a top-level "Launch checklist" section consolidating everything still outstanding (DNS, placeholder content, logo, nice-to-haves) in one scannable list. Fixed two small inconsistencies found while reviewing: homepage meta description still said the old badge text ("Terapeuter..." vs the actual "Fysioterapeuter..."), and therapist email placeholders in `fysioterapeuter.html` used a dash (`nesttuntorget-fysioterapi.no`) that didn't match the real domain.
