@@ -13,6 +13,7 @@ Du trenger en egen GitHub-konto med tilgang til nettsiden. Be den som administre
    - **index.html** – forsiden (Hjem)
    - **fysioterapeuter.html** – siden "Våre fysioterapeuter"
    - **kontakt.html** – siden "Kontakt oss"
+   - **sporsmal.html** – siden "Spørsmål"
 3. Klikk på blyant-ikonet (✏️) øverst til høyre i filvisningen for å redigere.
 4. Finn teksten du vil endre (bruk Ctrl+F / Cmd+F for å søke i teksten på siden).
 5. Endre **kun teksten** som står mellom `>` og `<` — se advarselen under.
@@ -36,6 +37,33 @@ HTML-koden består av "tagger" i vinkelparenteser, f.eks. `<p>` og `</p>`. Alt m
 → Her kan du endre selve telefonnummeret to steder (etter `tel:` og i teksten), men ikke slett `<a href="tel:...">` eller `</a>`.
 
 Hvis du er usiktrende: gjør én liten endring om gangen, lagre, og sjekk at siden fortsatt ser riktig ut før du gjør neste endring.
+
+## Fjerne den oransje/kursiverte plassholder-stilen
+
+Tekst som ennå ikke er reell (telefonnummer, åpningstider, navn osv.) er markert med `class="placeholder"`, som gjør at den vises i kursiv, oransje skrift — et signal om at "dette må fylles inn". Når du erstatter en slik plassholder med ekte innhold, bør du også fjerne denne markeringen, slik at teksten vises som vanlig tekst.
+
+Det finnes på to måter i koden:
+
+**1. Som en egen `<span>` rundt teksten:**
+```html
+<span class="placeholder">[+47 XX XX XX XX]</span>
+```
+Bytt ut den hakeparentesteksten med det ekte nummeret, og slett også `<span class="placeholder">` i starten og `</span>` på slutten — behold kun selve teksten:
+```html
++47 55 12 34 56
+```
+
+**2. Som en ekstra klasse på en tagg som allerede har en annen klasse:**
+```html
+<p class="staff-role placeholder">[Fysioterapeut / spesialisering]</p>
+```
+Bytt ut hakeparentesteksten, og fjern kun ordet `placeholder` fra `class`-listen (behold `staff-role` — den styrer selve utseendet, ikke plassholder-status):
+```html
+<p class="staff-role">Fysioterapeut / Manuellterapeut</p>
+```
+Hvis `placeholder` er den eneste klassen på taggen (f.eks. `<td class="placeholder">`), kan du fjerne hele `class="placeholder"`-biten.
+
+Tommelfingerregel: fjern kun selve ordet `placeholder` — ikke rør andre klassenavn eller selve taggene.
 
 ## Vanlige ting å oppdatere
 
