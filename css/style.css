@@ -151,8 +151,9 @@ a {
 
 .hero-image--fade img {
   box-shadow: none;
-  mask-image: radial-gradient(ellipse 75% 75% at center, black 15%, transparent 95%);
-  -webkit-mask-image: radial-gradient(ellipse 75% 75% at center, black 15%, transparent 95%);
+  opacity: 0.6;
+  mask-image: radial-gradient(ellipse 85% 85% at center, black 0%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 85% at center, black 0%, transparent 85%);
 }
 
 .trust-badges {
