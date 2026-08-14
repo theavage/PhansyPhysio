@@ -55,12 +55,22 @@ Design: simple, stylish, calm/trustworthy palette suited to a physiotherapy clin
 ## Phase 1a — Non-technical content editing (required)
 Plain hand-edited HTML/CSS files are not something clinic staff should have to touch directly.
 
-**Decision (2026-08-14): skip a form-based CMS for now.** A git-based CMS (Decap CMS) was considered — it would give a proper `/admin` form editor, but its GitHub login requires a small server-side OAuth proxy, which means creating an account on an extra platform (Cloudflare/Netlify) purely to host that proxy. User chose to skip that extra infrastructure for now.
+**Q: What's the simplest way for the therapists to update the site themselves, with zero coding?**
+**A: A git-based CMS (Decap CMS).** This is the actual simplest option *for the therapists* — simpler than the GitHub-editor approach currently in place, which still means carefully touching raw HTML tags. With Decap CMS set up:
+- A therapist goes to `nesttuntorgetfysioterapi.no/admin`, logs in with their own GitHub account (one click, no password to manage separately).
+- They see a plain form — labeled fields like "Navn", "Telefon", "Bio", and a button to upload a photo. No HTML, no tags, nothing that can visually break the page.
+- Saving the form commits the change and the live site updates automatically, same as any other push — no extra step for them.
 
-**Chosen approach: GitHub's built-in web file editor + a written guide.**
+**The catch (why this isn't already built): the one-time setup, not the day-to-day use.** Decap's GitHub login needs a small server-side "OAuth proxy" — GitHub Pages only serves static files, so it can't run that login handshake itself. Setting that up means:
+1. Creating a GitHub OAuth App under the `theavage` account (a few clicks, no cost).
+2. Deploying a small proxy to a platform with serverless functions — e.g. a free Cloudflare account + a one-file Worker (~15–30 min, one-time). This is the step declined earlier (2026-08-14) to avoid extra accounts — flagging again now since "simplest for therapists" specifically favors this path.
+
+Once that one-time setup is done, the therapists never see or deal with any of that — just the plain form.
+
+**Current fallback (already built, in place today): GitHub's built-in web file editor + a written guide.**
 - [x] Wrote [`REDIGERING.md`](../REDIGERING.md) (Norwegian, staff-facing) — step-by-step for editing text directly on github.com, what's safe to touch vs. not, a lookup table of common edits, and how to recover from mistakes via commit history.
 - [ ] User needs to invite each staff member as a GitHub **Collaborator** (repo Settings → Collaborators) so they have their own login rather than sharing the owner's credentials.
-- [ ] Revisit Decap CMS later if the GitHub-editor approach proves too error-prone day-to-day (guide already flags this as an option).
+- [ ] **Decision pending:** set up Decap CMS (simplest for therapists, needs ~15–30 min one-time setup + a free Cloudflare account) vs. stick with the GitHub-editor + guide (zero extra setup, but therapists touch raw HTML). Let Claude know which to proceed with.
 
 ## Phase 2 — Turn on GitHub Pages (get the `github.io` URL working first)
 - [x] Enabled via `gh api repos/theavage/PhansyPhysio/pages` (source: branch `main`, path `/`).
@@ -103,6 +113,7 @@ Plain hand-edited HTML/CSS files are not something clinic staff should have to t
 ## Status log
 _(most recent first — one line per session/change)_
 
+- 2026-08-14 — Answered "what's the simplest way for therapists to edit with zero coding" in Phase 1a: Decap CMS remains the actual answer (plain form, no HTML) — the earlier objection was about one-time setup cost (OAuth proxy + a free Cloudflare/Netlify account), not ongoing complexity for therapists. Documented clearly and left as a pending decision for the user.
 - 2026-08-14 — Added a top-level "Launch checklist" section consolidating everything still outstanding (DNS, placeholder content, logo, nice-to-haves) in one scannable list. Fixed two small inconsistencies found while reviewing: homepage meta description still said the old badge text ("Terapeuter..." vs the actual "Fysioterapeuter..."), and therapist email placeholders in `fysioterapeuter.html` used a dash (`nesttuntorget-fysioterapi.no`) that didn't match the real domain.
 - 2026-08-14 — Hero image fade pushed further per follow-up feedback: reduced opacity (0.6) and widened/softened the mask gradient so it reads as an ambient background element on the right side rather than a distinct framed photo.
 - 2026-08-14 — Moved "Timebestilling" text on `kontakt.html` out of the `contact-info-card` box, now sits directly under the "Kontakt oss" heading/lead in the hero. Removed a stray comma in the parking sentence on `index.html` ("...Nesttunvei 16) mot betaling."). Domain registrar confirmed as domeneshop.no (package includes "Epost" + "WebStandard" hosting) — see Phase 3 notes for Domeneshop-specific DNS steps.
