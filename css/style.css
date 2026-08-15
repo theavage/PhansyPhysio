@@ -1,24 +1,24 @@
 /* ==========================================================================
-   Nesttuntorget Fysioterapi — shared stylesheet
+   Nesttuntorget Fysioterapi & Manuellterapi — shared stylesheet (design v2)
    ========================================================================== */
 
 :root {
-  --color-primary: #2f6f62;
-  --color-primary-dark: #204c43;
-  --color-accent: #d98a4e;
-  --color-bg: #faf9f6;
-  --color-bg-alt: #eef4f1;
+  --color-primary: #1b3a52;
+  --color-primary-dark: #10222f;
+  --color-accent: #c8562e;
+  --color-bg: #faf6f0;
+  --color-bg-alt: #f1e7da;
   --color-card: #ffffff;
-  --color-text: #2b2b2b;
-  --color-text-light: #5b5f5e;
-  --color-border: #e1e5e2;
+  --color-text: #262220;
+  --color-text-light: #6b6259;
+  --color-border: #e6dcce;
 
   --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-heading: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: "Fraunces", Georgia, "Times New Roman", serif;
 
   --max-width: 1120px;
   --radius: 12px;
-  --shadow: 0 4px 16px rgba(32, 76, 67, 0.08);
+  --shadow: 0 4px 18px rgba(27, 58, 82, 0.1);
 }
 
 * {
@@ -52,6 +52,16 @@ a {
   padding: 0 24px;
 }
 
+.eyebrow {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin: 0 0 10px;
+}
+
 /* ---- Header / nav ---- */
 .site-header {
   background: var(--color-card);
@@ -73,9 +83,9 @@ a {
 
 .site-logo {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--color-primary-dark);
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--color-primary);
   text-decoration: none;
   letter-spacing: -0.01em;
 }
@@ -101,22 +111,24 @@ a {
 
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
   border-bottom-color: var(--color-accent);
 }
 
 /* ---- Hero ---- */
 .hero {
-  background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-bg) 70%);
-  padding: 64px 0 48px;
+  background: var(--color-bg-alt);
+  padding: 64px 0 56px;
 }
 
 .hero h1 {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 4vw, 2.9rem);
   margin: 0 0 12px;
-  color: var(--color-primary-dark);
-  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
 }
 
 .hero .lead {
@@ -129,7 +141,7 @@ a {
 .hero-flex {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 56px;
   flex-wrap: wrap;
 }
 
@@ -139,21 +151,29 @@ a {
 
 .hero-image {
   flex: 1 1 320px;
+  position: relative;
+}
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  right: -22px;
+  bottom: -22px;
+  left: 22px;
+  background: var(--color-accent);
+  border-radius: var(--radius);
+  z-index: 0;
 }
 
 .hero-image img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-}
-
-.hero-image--fade img {
-  box-shadow: none;
-  opacity: 0.6;
-  mask-image: radial-gradient(ellipse 85% 85% at center, black 0%, transparent 85%);
-  -webkit-mask-image: radial-gradient(ellipse 85% 85% at center, black 0%, transparent 85%);
 }
 
 .trust-badges {
@@ -173,12 +193,12 @@ a {
   padding: 10px 18px;
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
   box-shadow: var(--shadow);
 }
 
 .trust-badge .check {
-  color: var(--color-primary);
+  color: var(--color-accent);
   font-size: 1.1rem;
 }
 
@@ -193,8 +213,9 @@ a {
 
 .section h2 {
   font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  color: var(--color-primary-dark);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.15rem);
+  color: var(--color-primary);
   margin: 0 0 8px;
   letter-spacing: -0.01em;
 }
@@ -211,6 +232,39 @@ a {
   color: var(--color-text-light);
 }
 
+/* ---- Helfo info box ---- */
+.helfo-box {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+
+.helfo-box img {
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.helfo-box p {
+  margin: 0;
+  color: var(--color-text-light);
+}
+
+@media (max-width: 640px) {
+  .helfo-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .helfo-box img {
+    width: 110px;
+  }
+}
+
 /* ---- Vi tilbyr cards ---- */
 .offer-grid {
   display: grid;
@@ -221,6 +275,7 @@ a {
 .offer-card {
   background: var(--color-card);
   border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-accent);
   border-radius: var(--radius);
   padding: 28px 24px;
   box-shadow: var(--shadow);
@@ -234,9 +289,10 @@ a {
 
 .offer-card h3 {
   font-family: var(--font-heading);
+  font-weight: 600;
   margin: 0 0 8px;
-  font-size: 1.1rem;
-  color: var(--color-primary-dark);
+  font-size: 1.15rem;
+  color: var(--color-primary);
 }
 
 .offer-card p {
@@ -301,9 +357,10 @@ a {
 
 .staff-card h3 {
   font-family: var(--font-heading);
+  font-weight: 600;
   margin: 0 0 4px;
-  color: var(--color-primary-dark);
-  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-size: 1.25rem;
 }
 
 .staff-role {
@@ -342,6 +399,7 @@ a {
 .faq-item {
   background: var(--color-card);
   border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
   border-radius: var(--radius);
   padding: 24px 28px;
   box-shadow: var(--shadow);
@@ -349,9 +407,10 @@ a {
 
 .faq-item h3 {
   font-family: var(--font-heading);
+  font-weight: 600;
   margin: 0 0 8px;
-  color: var(--color-primary-dark);
-  font-size: 1.1rem;
+  color: var(--color-primary);
+  font-size: 1.15rem;
 }
 
 .faq-item p {
@@ -377,9 +436,10 @@ a {
 
 .contact-info-card h3 {
   font-family: var(--font-heading);
-  color: var(--color-primary-dark);
+  font-weight: 600;
+  color: var(--color-primary);
   margin: 24px 0 10px;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
 }
 
 .contact-info-card h3:first-child {
@@ -433,7 +493,7 @@ a {
 /* ---- Footer ---- */
 .site-footer {
   background: var(--color-primary-dark);
-  color: #eef4f1;
+  color: #ede4d8;
   padding: 40px 0;
   margin-top: 40px;
 }
@@ -447,14 +507,15 @@ a {
 
 .site-footer h4 {
   font-family: var(--font-heading);
+  font-weight: 600;
   margin: 0 0 10px;
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: #fff;
 }
 
 .site-footer p,
 .site-footer a {
-  color: #cfe0da;
+  color: #cbbfae;
   font-size: 0.92rem;
   text-decoration: none;
 }
@@ -470,9 +531,9 @@ a {
 .footer-bottom {
   margin-top: 28px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 0.85rem;
-  color: #a9c1b8;
+  color: #9c8f7c;
 }
 
 /* ---- Placeholder text marker ---- */

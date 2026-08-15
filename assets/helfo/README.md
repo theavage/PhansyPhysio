@@ -1,0 +1,1 @@
+`helfo-logo.svg` is the official Helfo logo, sourced from Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Helfo_logo.svg), itself sourced from helfo.no. Public domain — the logo consists only of simple geometric shapes/text and doesn't meet the threshold of originality for copyright.
