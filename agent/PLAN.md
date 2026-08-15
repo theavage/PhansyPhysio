@@ -25,7 +25,7 @@ _(Quick-reference summary — the phases below have the full detail on each item
 
 **Should fill in before launch** (these currently show as bracketed `[...]` placeholders on the live site — fine for review, not for real visitors):
 - [x] ~~E-post-adresse~~ — decided there's no single shared institute email (each therapist has their own), so the shared `post@...` line was removed everywhere rather than filled in. Not a gap anymore.
-- [ ] Åpningstider on `kontakt.html` (placeholder hours)
+- [x] ~~Åpningstider~~ — removed entirely from `kontakt.html` at the user's request rather than filled in. Not a gap anymore.
 - [ ] The 3 therapists' navn, e-post, telefon og bio on `fysioterapeuter.html` (1 of 3 in progress — see status log)
 - [x] ~~Avbestillingsfrist/gebyr og priser~~ on `sporsmal.html` — written in. ~~Sykmelding~~ and ~~"hva bør jeg tenke på til første time"~~ FAQ items removed entirely rather than filled in.
 - [ ] Logo — the generated placeholder mark was removed at the user's request (2026-08-14); header is back to plain text, no favicon. Still need the real logo from the user.
@@ -114,6 +114,8 @@ Once that one-time setup is done, the therapists never see or deal with any of t
 
 ## Status log
 _(most recent first — one line per session/change)_
+
+- 2026-08-15 — Added address + embedded Google Map directly into "Slik finner du oss" on `index.html` (reused the same `.map-embed`/`.contact-grid` styling as `kontakt.html`), and removed the now-redundant "Se fullstendig adresse og kart på kontaktsiden vår" sentence. Removed the Åpningstider block entirely from `kontakt.html` (was placeholder hours) per the user's request.
 
 - 2026-08-15 — `hero-wide` merged into `main` (fast-forward) and live — the wide homepage hero (background photo, 2-line headline) is now what's deployed. Both feature branches (`design-v2`, `hero-wide`) are fully caught up into `main`; no outstanding unmerged design work.
 
