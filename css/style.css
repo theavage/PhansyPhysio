@@ -3,8 +3,8 @@
    ========================================================================== */
 
 :root {
-  --color-primary: #1b3a52;
-  --color-primary-dark: #10222f;
+  --color-primary: #0f5c50;
+  --color-primary-dark: #0a3a32;
   --color-accent: #c8562e;
   --color-bg: #faf6f0;
   --color-bg-alt: #f1e7da;
@@ -18,7 +18,7 @@
 
   --max-width: 1120px;
   --radius: 12px;
-  --shadow: 0 4px 18px rgba(27, 58, 82, 0.1);
+  --shadow: 0 4px 18px rgba(15, 92, 80, 0.12);
 }
 
 * {
@@ -119,6 +119,10 @@ a {
 .hero {
   background: var(--color-bg-alt);
   padding: 64px 0 56px;
+}
+
+.hero h1 .amp {
+  font-family: var(--font-main);
 }
 
 .hero h1 {
