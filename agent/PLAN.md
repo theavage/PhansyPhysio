@@ -115,6 +115,8 @@ Once that one-time setup is done, the therapists never see or deal with any of t
 ## Status log
 _(most recent first — one line per session/change)_
 
+- 2026-08-15 — Restructured "Slik finner du oss" on `index.html`: the whole text column (heading, intro, Bybane badge, bus/parking paragraph, Adresse) now sits in the left column of `.contact-grid` next to the map on the right, instead of the map only pairing with the address below full-width text. Section is noticeably shorter now — map sits alongside content instead of stacked after it. Verified desktop + mobile (stacks cleanly via the existing `.contact-grid` responsive rule).
+
 - 2026-08-15 — Added address + embedded Google Map directly into "Slik finner du oss" on `index.html` (reused the same `.map-embed`/`.contact-grid` styling as `kontakt.html`), and removed the now-redundant "Se fullstendig adresse og kart på kontaktsiden vår" sentence. Removed the Åpningstider block entirely from `kontakt.html` (was placeholder hours) per the user's request.
 
 - 2026-08-15 — `hero-wide` merged into `main` (fast-forward) and live — the wide homepage hero (background photo, 2-line headline) is now what's deployed. Both feature branches (`design-v2`, `hero-wide`) are fully caught up into `main`; no outstanding unmerged design work.
