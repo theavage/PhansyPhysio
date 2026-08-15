@@ -6,7 +6,7 @@ Starting point: informational static site for **Nesttuntorget Fysioterapi** (a p
 
 **Content policy: no visible faces in stock imagery.** Photos used as placeholders must not show identifiable faces (crop to hands/backs/equipment instead); anywhere a specific person needs representing (e.g. staff avatars) use a faceless illustration instead of a stock photo, so nobody mistakes a random stranger's face for a real staff member.
 
-**Branch note (2026-08-15): `design-v2`.** A second visual design, branched from `main`, same content/copy/structure — different color palette, typography, and a few layout treatments (see status log for details). `main` is still what's live/what Pages deploys from; this branch is exploratory until the user decides whether to merge it. If you're reading this on `design-v2`, the color/font tokens in `css/style.css` differ intentionally from what's described as "current" elsewhere in this doc — check the file itself, not this prose, for the live truth.
+**Branch note (2026-08-15): `design-v2` merged into `main`.** The redesign (teal-emerald palette, Fraunces headings, offset-frame hero, Helfo section) is now live — `design-v2` was a fast-forward merge, nothing left un-merged. The branch itself is left in place on GitHub (harmless, just points at the same history as `main` now) rather than deleted, in case it's useful as a reference later.
 
 ## Ground rules
 - Claude can edit files, commit, push, and manage the GitHub repo (it's already created and connected).
