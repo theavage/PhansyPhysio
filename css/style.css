@@ -460,54 +460,12 @@ a {
   color: var(--color-text-light);
 }
 
-/* ---- Kontakt oss ---- */
+/* ---- Contact grid + map (Slik finner du oss) ---- */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
   align-items: start;
-}
-
-.contact-info-card {
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: var(--shadow);
-}
-
-.contact-info-card h3 {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  color: var(--color-primary);
-  margin: 24px 0 10px;
-  font-size: 1.1rem;
-}
-
-.contact-info-card h3:first-child {
-  margin-top: 0;
-}
-
-.contact-info-card p {
-  margin: 0;
-  color: var(--color-text-light);
-}
-
-.hours-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-
-.hours-table td {
-  padding: 4px 0;
-  color: var(--color-text-light);
-}
-
-.hours-table td:last-child {
-  text-align: right;
-  color: var(--color-text);
-  font-weight: 500;
 }
 
 .map-embed {
