@@ -87,9 +87,8 @@ Once that one-time setup is done, the therapists never see or deal with any of t
   - Find the existing `A`-record(s) for host `@` (root domain) — these currently point at Domeneshop's own WebStandard hosting server, which is why the domain shows the old WordPress site. Replace them with the 4 GitHub Pages `A` records below. If Domeneshop's UI ties the `@` `A`-record to the WebStandard package (e.g. a "bruk webhotell" toggle) and won't let you edit it directly, look for an option to switch that host to custom/manual DNS, or just add the new `A` records — Domeneshop's advanced DNS editor generally allows overriding this.
   - **Leave the `MX` record(s) alone** — that's what routes your email, and it's independent of the `A` record. Changing only the `A` record does not affect the "Epost" part of the package.
   - Click **Lagre** (Save) when done.
-- [x] ~~`CNAME` file added, custom domain set via API~~ — **reverted.** Learned the hard way: as soon as GitHub Pages has a custom domain configured, it force-redirects the default `github.io` URL to that domain — even before DNS points there. Since `nesttuntorgetfysioterapi.no` still resolves to the old site (a default WordPress install) until DNS is updated, this made the new site briefly unreachable/unreviewable. Removed `CNAME` and unset `cname` via API so `https://theavage.github.io/PhansyPhysio/` works for review again in the meantime.
-- [ ] **Do not re-add `CNAME`/set the custom domain until DNS is updated** (or coordinate the two closely) — that's the actual next step once the user has updated DNS.
-- [ ] **User step, at the registrar dashboard** — add DNS records:
+- [x] `CNAME` file re-added, custom domain re-set via API (2026-08-15) — this time deliberately, as the actual final launch step (user asked to publish), not mid-review like the first attempt that got reverted. `theavage.github.io/PhansyPhysio` will now redirect to `nesttuntorgetfysioterapi.no`, which won't resolve until DNS below is done — expected, not a bug.
+- [ ] **User step, at the registrar dashboard (domeneshop.no)** — add DNS records:
   - The 4 target `A` records (also listed below for reference):
     - `185.199.108.153`
     - `185.199.109.153`
@@ -114,6 +113,8 @@ Once that one-time setup is done, the therapists never see or deal with any of t
 
 ## Status log
 _(most recent first — one line per session/change)_
+
+- 2026-08-15 — Pulled the user's latest direct GitHub edits first (real therapist bios for all 3, updated contact info, Bybane distance tweaked to "150 meter"). Noticed while reading: the bio `<p>` on all 3 staff cards now has nested `<p>` tags inside it (invalid HTML — a `<p>` can't contain another `<p>`) and lost its `class="bio"`, so `.staff-card p.bio` styling no longer applies to the bio text. Flagged to user, not fixed yet (their edit, their call whether/how to fix). — User then asked to publish to the real domain: re-added `CNAME` (`nesttuntorgetfysioterapi.no`) and re-set the custom domain via `gh api ... -X PUT -f cname=...`, this time as the deliberate final step (not mid-review). Gave user the exact Domeneshop DNS steps to complete Phase 3.
 
 - 2026-08-15 — Two small additions: (1) "Tilgjengelighet" (heis/adkomst) added back into the homepage's "Slik finner du oss" — sits in a 2-column row next to "Adresse" (inline grid, `grid-template-columns: 1fr 1fr`) rather than stacked below it, so the section didn't grow taller. (2) Added a privacy note (`NB: Av personvernhensyn...`) to `fysioterapeuter.html`, right above the staff cards and their visible e-post/telefon details — asks visitors not to send helseopplysninger via e-post or SMS. Standard practice for Norwegian healthcare sites given unencrypted email/SMS isn't appropriate for sensitive health info.
 
