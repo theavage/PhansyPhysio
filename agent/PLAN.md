@@ -20,8 +20,8 @@ Starting point: informational static site for **Nesttuntorget Fysioterapi** (a p
 _(Quick-reference summary — the phases below have the full detail on each item.)_
 
 **Blocking — must happen before the real domain points here:**
-- [ ] **User:** update DNS at Domeneshop (see Phase 3) — swap the `A` records to GitHub's IPs, leave `MX` alone.
-- [ ] **Claude, once DNS resolves:** re-add `CNAME`, reconfigure the custom domain on GitHub Pages, verify it resolves, enable "Enforce HTTPS" (Phase 4).
+- [x] **Site is live** at `http://nesttuntorgetfysioterapi.no` (2026-08-15).
+- [ ] Enable "Enforce HTTPS" once GitHub finishes issuing the cert (Phase 4) — not yet available, retry later.
 
 **Should fill in before launch** (these currently show as bracketed `[...]` placeholders on the live site — fine for review, not for real visitors):
 - [x] ~~E-post-adresse~~ — decided there's no single shared institute email (each therapist has their own), so the shared `post@...` line was removed everywhere rather than filled in. Not a gap anymore.
@@ -80,30 +80,19 @@ Once that one-time setup is done, the therapists never see or deal with any of t
 - [x] Confirmed live at `https://theavage.github.io/PhansyPhysio/` — homepage and `sporsmal.html` both verified rendering correctly.
 - [x] Custom domain not touched yet — correctly isolating DNS problems from Pages/build problems.
 
-## Phase 3 — Point the custom domain at GitHub Pages (user action + Claude action)
+## Phase 3 — Point the custom domain at GitHub Pages ✅ DONE (2026-08-15)
 - [x] Domain confirmed: **nesttuntorgetfysioterapi.no** (apex, primary — no `www`).
-- [x] Registrar confirmed: **domeneshop.no** ("Domeneshop"), currently on their "Epost + WebStandard" package (bundled email + basic web hosting for the domain).
-- [ ] **User step, Domeneshop-specific** — log in at domeneshop.no ("Mitt Domeneshop") → **Mine domener** → click `nesttuntorgetfysioterapi.no` → **DNS-innstillinger**. In the record table:
-  - Find the existing `A`-record(s) for host `@` (root domain) — these currently point at Domeneshop's own WebStandard hosting server, which is why the domain shows the old WordPress site. Replace them with the 4 GitHub Pages `A` records below. If Domeneshop's UI ties the `@` `A`-record to the WebStandard package (e.g. a "bruk webhotell" toggle) and won't let you edit it directly, look for an option to switch that host to custom/manual DNS, or just add the new `A` records — Domeneshop's advanced DNS editor generally allows overriding this.
-  - **Leave the `MX` record(s) alone** — that's what routes your email, and it's independent of the `A` record. Changing only the `A` record does not affect the "Epost" part of the package.
-  - Click **Lagre** (Save) when done.
-- [x] `CNAME` file re-added, custom domain re-set via API (2026-08-15) — this time deliberately, as the actual final launch step (user asked to publish), not mid-review like the first attempt that got reverted. `theavage.github.io/PhansyPhysio` will now redirect to `nesttuntorgetfysioterapi.no`, which won't resolve until DNS below is done — expected, not a bug.
-- [ ] **User step, at the registrar dashboard (domeneshop.no)** — add DNS records:
-  - The 4 target `A` records (also listed below for reference):
-    - `185.199.108.153`
-    - `185.199.109.153`
-    - `185.199.110.153`
-    - `185.199.111.153`
-    - (optional, IPv6) `AAAA` records: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
-  - **`www` subdomain** (optional, only if you also want `www.nesttuntorgetfysioterapi.no` to work and redirect to the apex): one `CNAME` record → `theavage.github.io`
-  - Remove/replace any conflicting existing `A`/`CNAME` records on the same host (e.g. records currently pointing at the old WordPress install).
-- [ ] Wait for DNS propagation (usually minutes, can take up to 24h). Check with `dig +short nesttuntorgetfysioterapi.no` and compare against the IPs above.
-- [ ] Once DNS resolves, recheck `gh api repos/theavage/PhansyPhysio/pages` — status should move off `"errored"`, and GitHub Pages → Settings → Pages should show the domain verified (possibly with a one-time TXT-record domain-ownership-verification step surfaced there — that flow is web-UI-driven, so check there if prompted).
+- [x] Registrar confirmed: **domeneshop.no**. Correction to an earlier assumption in this doc: the domain does **not** actually have Domeneshop web hosting active (checked the "Webhosting" tab directly — "Dette domenet har ikke webhosting gjennom Domeneshop") despite what public listings suggested. Domeneshop's own nameservers (`ns1/ns2/ns3.hyp.net`) are authoritative for the domain (confirmed via "Navnetjenere" tab), so its **DNS-pekere** page is the real, live DNS zone.
+- [x] `CNAME` file added, custom domain set via `gh api ... -X PUT -f cname=nesttuntorgetfysioterapi.no`.
+- [x] **User added the 4 `A` records** in Domeneshop's DNS-pekere UI: for each, left the hostname field blank (= root domain) and entered one of `185.199.108.153` / `.109.153` / `.110.153` / `.111.153`, adding each via the green "+". No conflicting root entry existed beforehand, so this was a clean addition — nothing removed. Domeneshop's Microsoft 365 email records (`autodiscover`, `enterpriseenrollment`, `enterpriseregistration`, `lyncdiscover`, `msoid`, `sip`) and the existing `www → nesttuntorgetfysioterapi.no` CNAME were untouched throughout.
+- [x] DNS verified propagated: `dig +short nesttuntorgetfysioterapi.no A` returns all 4 GitHub IPs.
+- [x] `gh api repos/theavage/PhansyPhysio/pages` status moved from `"errored"` to `"built"`.
+- [x] Confirmed live in-browser at `http://nesttuntorgetfysioterapi.no`.
 
 ## Phase 4 — Finalize on GitHub
-- [ ] Settings → Pages should show the custom domain as verified, with a green check and no DNS warning.
-- [ ] Enable **"Enforce HTTPS"** once the checkbox becomes available (GitHub auto-issues the cert after DNS is correctly pointed — this can take a while after DNS first resolves).
-- [ ] Load the site at the real domain over `https://`, confirm the padlock/cert is valid and content renders.
+- [x] Domain shows correctly configured (`protected_domain_state: null`, `pending_domain_unverified_at: null` — no verification blocker, no DNS warning).
+- [ ] **In progress:** enable "Enforce HTTPS". Tried via API (`gh api ... -F https_enforced=true`) — currently returns `"The certificate does not exist yet"`, i.e. GitHub hasn't finished auto-issuing the TLS cert for the domain yet (normal right after DNS first resolves; can take minutes to a couple hours). Retry later: `gh api repos/theavage/PhansyPhysio/pages -X PUT -F "https_enforced=true"`.
+- [ ] Once that succeeds, load `https://nesttuntorgetfysioterapi.no`, confirm the padlock/cert is valid.
 
 ## Phase 5 — Ongoing
 - [ ] Future changes: edit files locally, commit, push to `main` — GitHub Pages rebuilds automatically, no extra deploy step needed.
@@ -113,6 +102,8 @@ Once that one-time setup is done, the therapists never see or deal with any of t
 
 ## Status log
 _(most recent first — one line per session/change)_
+
+- 2026-08-15 — 🎉 **Site is live at nesttuntorgetfysioterapi.no.** Walked the user through Domeneshop's UI live, screenshot by screenshot: confirmed no Domeneshop web hosting was actually active for the domain (contradicting the earlier "WebStandard" assumption in this doc) and that Domeneshop's own nameservers are authoritative, so DNS-pekere was the correct place. User added 4 A-records (root/blank host → each GitHub IP) with no conflicts to remove; Microsoft 365 email records and the existing `www` CNAME were untouched. DNS propagated immediately (`dig` confirmed all 4 IPs), Pages status flipped from `errored` to `built`, and the site loads correctly at the real domain. Only remaining step: "Enforce HTTPS" isn't enabled yet — GitHub returned "certificate does not exist yet" when tried via API, which is expected right after DNS first resolves. Retry `gh api repos/theavage/PhansyPhysio/pages -X PUT -F "https_enforced=true"` later (minutes to a couple hours).
 
 - 2026-08-15 — Pulled the user's latest direct GitHub edits first (real therapist bios for all 3, updated contact info, Bybane distance tweaked to "150 meter"). Noticed while reading: the bio `<p>` on all 3 staff cards now has nested `<p>` tags inside it (invalid HTML — a `<p>` can't contain another `<p>`) and lost its `class="bio"`, so `.staff-card p.bio` styling no longer applies to the bio text. Flagged to user, not fixed yet (their edit, their call whether/how to fix). — User then asked to publish to the real domain: re-added `CNAME` (`nesttuntorgetfysioterapi.no`) and re-set the custom domain via `gh api ... -X PUT -f cname=...`, this time as the deliberate final step (not mid-review). Gave user the exact Domeneshop DNS steps to complete Phase 3.
 
